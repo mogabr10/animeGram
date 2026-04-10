@@ -1,0 +1,23 @@
+{
+  "name": "Super AI Agency Framework",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "forwardPorts": [80, 8000, 5432, 6379, 8080, 9000],
+  "portsAttributes": {
+    "80": { "label": "nginx / frontend", "onAutoForward": "notify" },
+    "8000": { "label": "backend API", "onAutoForward": "notify" },
+    "8080": { "label": "Adminer", "onAutoForward": "notify" },
+    "9000": { "label": "Portainer", "onAutoForward": "notify" }
+  },
+  "postCreateCommand": "docker compose up -d",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-azuretools.vscode-docker"]
+    }
+  }
+}
